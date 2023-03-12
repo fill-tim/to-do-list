@@ -1,0 +1,67 @@
+{% extends 'main/base.html' %}
+
+{% block title%}
+Главная страница
+{% endblock %}
+
+{% block content %}
+
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css"-->
+<!--      integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q=="-->
+<!--      crossorigin="anonymous" referrerpolicy="no-referrer"/>-->
+<!--<link rel="stylesheet"-->
+<!--      href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"-->
+<!--      integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous"/>-->
+
+<form action="{% url 'note_add'%}" method="post">
+   {% csrf_token %}
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="">
+                <table style="
+                        border-collapse: separate;
+                        margin-top: 50px;
+                        text-align: center;
+                        width: 50%;
+                        margin-right: auto;
+                        margin-left: auto;
+                        border-spacing: 0 12px;
+                        ">
+                    <thead style="background: white; margin-bottom: 10px;">
+                    <tr>
+                        <th style=" padding: 10px;" scope="col">Заголовок</th>
+                        <th style=" padding: 10px;" scope="col">Описание</th>
+                        <th style=" padding: 10px;" scope="col">Важность</th>
+                        <th style=" padding: 10px;" scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody style=" background: white ">
+                    <tr>
+                        {% for item in form %}
+                        <td style=" padding: 15px;">{{ item }}</td>
+                        {% endfor %}
+                        <td style="
+                        padding: 15px;
+                        ">
+                            <button type="submit"
+                                    style="
+                                    font-weight: 400;
+                                    text-align: center;
+                                    vertical-align: middle;
+                                    border: 1px solid #8C4162;
+                                    padding: 0.375rem 0.75rem;
+                                    font-size: 1rem;
+                                    line-height: 1.5;
+                                    border-radius: 0.25rem;
+                                    background: #F5C5DF">
+                                Добавить
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
